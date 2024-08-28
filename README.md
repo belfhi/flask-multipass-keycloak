@@ -35,10 +35,8 @@ MULTIPASS_IDENTITY_PROVIDERS = {
         'title': 'Keycloak Identity Provider',
         'identifier_field': 'email',
         'keycloak_args': {
-            'client_name': '<client_name>',
+            'client_id': '<client_id>',
             'client_secret': '<client_secret>',
-            'username': <username>,
-            'password': <password>,
             'access_token_url': <access-token-url>,
             'realm_api_url': <realm-api-url>
         }

@@ -209,10 +209,8 @@ class KeycloakIdentityProvider(AuthlibIdentityProvider):
         if api_token:
             api_session.headers.update({'Authorization': f'Bearer {api_token}'})
             return api_session
-        basic = HTTPBasicAuth(self.keycloak_settings['client_name'], self.keycloak_settings['client_secret'])
-        data = {'username': self.keycloak_settings['username'],
-                'password': self.keycloak_settings['password'],
-                'grant_type': 'password'}
+        basic = HTTPBasicAuth(self.keycloak_settings['client_id'], self.keycloak_settings['client_secret'])
+        data = {'grant_type': 'client_credentials'}
         self.logger.info('Requesting access token')
         response = api_session.post(self.keycloak_settings['access_token_url'], auth=basic, data=data)
         if response.status_code != 200:
