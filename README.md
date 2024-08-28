@@ -44,6 +44,14 @@ MULTIPASS_IDENTITY_PROVIDERS = {
 }
 ```
 
+### Keycloak Client Configuration
+
+In order to use the Keycloak API, the client needs to be able to set up with the appropriate permissions.
+This is done by enabling `service accounts roles` in the client settings.
+
+This adds an extra _Service Accounts Roles_ tab in the Keycloak Client settings.
+In this tab the role `query-users` & `query-groups` role from the `realm-management` client need to be added.
+
 ### Performance
 
 The library needs to get an API access token from Keycloak which typically takes 200-300ms. Set the `cache` key of the multipass identity provider configuration to the import path of a Flask-Caching instance or a function returning such an instance, or the instance itself to enable caching of tokens (until they expire) and group data (30 minutes).
